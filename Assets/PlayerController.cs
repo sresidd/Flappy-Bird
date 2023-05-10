@@ -5,18 +5,18 @@ public class PlayerController : MonoBehaviour
     public event System.Action OnBlockPassed, OnObstacleCollision;
     [SerializeField] Rigidbody2D rb2D;
     [SerializeField] float impulseForce = 10f;
-    private bool canFly = false;
+    // private bool canFly = false;
 
     void Start()
     {
         if(rb2D==null)rb2D = FindObjectOfType<Rigidbody2D>();
-        canFly = true;
+        // canFly = true;
     }
 
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Space) && canFly){
+        if(Input.GetKeyDown(KeyCode.Space)){
             rb2D.velocity = Vector2.up * impulseForce;
             // rb2D.AddForce(Vector2.up * impulseForce, ForceMode2D.Impulse);
         }
@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.CompareTag("Obstacles")){
-            canFly = false;
+            // canFly = false;
+            Destroy(gameObject);
             OnObstacleCollision?.Invoke();
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -8,8 +6,8 @@ public class HighScore : MonoBehaviour
     public TMP_Text highScoreText;
     public TMP_Text currentScoreText;
 
-     int highScore;
-     int currentScore = 0;
+    int highScore;
+    int currentScore = 0;
 
     string highScoreKey = "HighScore";
 
@@ -25,13 +23,12 @@ public class HighScore : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         FindObjectOfType<PlayerController>().OnBlockPassed += IncrementScore;
-        // currentScoreText.text = currentScore.ToString();
-        currentScoreText.text = "Journalax";
-        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+        // currentScoreText.text = currentScore.T
+        currentScoreText.text = currentScore.ToString();
+        highScore = PlayerPrefs.GetInt(highScoreKey);
         highScoreText.text = highScore.ToString();
     }
 

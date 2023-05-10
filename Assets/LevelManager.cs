@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class SceneManager : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class LevelManager : MonoBehaviour
 {
     [SerializeField] GameObject GameOverUI;
     // Start is called before the first frame update
@@ -17,9 +14,7 @@ public class SceneManager : MonoBehaviour
         GameOverUI.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void ReloadGame(){
+        SceneManager.LoadScene(0);
     }
 }
